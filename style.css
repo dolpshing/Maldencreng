@@ -67,7 +67,7 @@ header h1 {
 
 #beg-button {
   font-family: Solway, serif;
-  height: 15em;
+  height: 32em;
   width: 15em;
   background: #E0B0FF;
   border: white 3px solid;
@@ -80,4 +80,8 @@ header h1 {
 
 #beg-button:active {
   background: #c072f2;
+}
+
+#beg-button #beg-cpc {
+  font-size: 1.2em;
 }

@@ -3,6 +3,8 @@ const gameboard = document.querySelector('#gameboard');
 const infoBar = document.querySelector('#info-bar');
 const croinsText = document.querySelector('#croins');
 const maldbucksText = document.querySelector('#maldbucks');
+const cpsText = document.querySelector('#cps');
+const begCpcText = document.querySelector('#beg-cpc');
 const begButton = document.querySelector('#beg-button');
 
 // Game Variables
@@ -24,6 +26,8 @@ main();
 function updateInfo() {
   croinsText.innerHTML = 'Croins: ' + croins;
   maldbucksText.innerHTML = 'Maldbucks: ' + maldbucks;
+  cpsText.innerHTML = 'Croins/sec: ' + cps;
+  begCpcText.innerHTML = 'Per Click: ' + cpc;
 }
 
 // Add Croins every second
@@ -37,7 +41,7 @@ function addCPS() {
 // Check if Beg Button is being clicked
 function checkForBeg() {
   begButton.addEventListener('click', () => {
-    croins += 1;
+    croins += cpc;
     updateInfo();
   })
 }
