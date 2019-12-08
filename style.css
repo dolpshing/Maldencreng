@@ -65,13 +65,19 @@ header h1 {
   height: 30em;
 }
 
+/* Beg Button Styles */
+
 #beg-button {
   font-family: Solway, serif;
-  height: 32em;
-  width: 15em;
+  flex: 1;
+  max-width: 15em;
   background: #E0B0FF;
   border: white 3px solid;
   margin: 2em;
+}
+
+#beg-button h3 {
+  font-size: 1.7em;
 }
 
 #beg-button p {
@@ -83,5 +89,44 @@ header h1 {
 }
 
 #beg-button #beg-cpc {
+  font-size: 1.2em;
+}
+
+/* Upgrade Styles */
+
+#upgrades {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.7em;
+  margin-left: .5em;
+  border: 3px white solid;
+  background: #4d4d4d;
+  overflow-y: auto;
+}
+
+.upgrade {
+  display: flex;
+  flex-direction: column;
+  font-family: Solway, serif;
+  width: 46%;
+  height: 6em;
+  border: 2px solid white;
+  margin: .8em .6em;
+  background: #E0B0FF;
+  justify-content: center;
+  align-items: center;
+}
+
+.upgrade:active {
+  background: #c072f2;
+}
+
+.upgrade h3 {
+  font-size: 1.6em;
+}
+
+.upgrade p {
   font-size: 1.2em;
 }
