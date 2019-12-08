@@ -30,6 +30,7 @@ main();
 function startupFunctions() {
   updateInfo();
   checkForBeg();
+  spaceKeyPress();
   addCPS();
 }
 
@@ -39,6 +40,8 @@ function updateInfo() {
   maldbucksText.innerHTML = 'Maldbucks: ' + maldbucks;
   cpsText.innerHTML = 'Croins/sec: ' + cps;
   begCpcText.innerHTML = 'Per Click: ' + cpc;
+  upgrade1Text.innerHTML = '+1 CPC';
+  upgrade2Text.innerHTML = '+1 CPS';
 }
 
 // Add Croins every second
@@ -55,6 +58,16 @@ function checkForBeg() {
     croins += cpc;
     updateInfo();
   })
+}
+
+function spaceKeyPress() {
+    document.addEventListener("keypress", (e) => {
+        if (e.which === 32 || e.keyCode === 132 || e.key === "Space") {
+            croins += cpc;
+            updateInfo();
+            return false;
+        }
+    })
 }
 
 // Check if upgrades have been clicked
