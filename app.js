@@ -8,10 +8,21 @@ const begCpcText = document.querySelector('#beg-cpc');
 const begButton = document.querySelector('#beg-button');
 
 // Upgrades
-const upgrade1 = document.querySelector('#upgrade1');
-const upgrade1Text = document.querySelector('#upgrade1-text');
-const upgrade2 = document.querySelector('#upgrade2');
-const upgrade2Text = document.querySelector('#upgrade2-text');
+let upgrade1 = {
+  object: document.querySelector('#upgrade1'),
+  costText: document.querySelector('#upgrade1-cost'),
+  descText: document.querySelector('#upgrade1-desc'),
+  cost: 10,
+  desc: 1
+}
+
+let upgrade2 = {
+  object: document.querySelector('#upgrade2'),
+  costText: document.querySelector('#upgrade2-cost'),
+  descText: document.querySelector('#upgrade2-desc'),
+  cost: 100,
+  desc: 1
+}
 
 // Game Variables
 let croins = 0; // Number of Croins
@@ -19,29 +30,45 @@ let maldbucks = 0; // Number of Maldbucks
 let cpc = 1; // Croins per click
 let cps = 0; // Croins per second
 
+// Check if Beg Button is being clicked
+const checkForBeg = () => {
+    croins += cpc;
+    updateInfo();
+}
+
 // Main function
 function main() {
   startupFunctions();
-  checkUpgrades();
 }
 
 main();
 
 function startupFunctions() {
   updateInfo();
-  checkForBeg();
-  spaceKeyPress();
   addCPS();
+  upgrade1.object.addEventListener('click', checkUpgrades);
+  begButton.addEventListener('click', checkForBeg);
 }
 
 // Updates in-game info
 function updateInfo() {
-  croinsText.innerHTML = 'Croins: ' + croins;
-  maldbucksText.innerHTML = 'Maldbucks: ' + maldbucks;
-  cpsText.innerHTML = 'Croins/sec: ' + cps;
-  begCpcText.innerHTML = 'Per Click: ' + cpc;
-  upgrade1Text.innerHTML = '+1 CPC';
-  upgrade2Text.innerHTML = '+1 CPS';
+  croinsText.innerHTML = `Croins: ${croins}`;
+  maldbucksText.innerHTML = `Maldbucks: ${maldbucks}`;
+  cpsText.innerHTML = `Croins/sec: ${cps}`;
+  begCpcText.innerHTML = `Per Click: ${cpc}`;
+  upgrade1.costText.innerHTML = croinsCost(upgrade1.cost);
+  upgrade1.descText.innerHTML = croinsDesc(upgrade1.desc, 'CPC');
+  upgrade2.descText.innerHTML = croinsDesc(upgrade1.desc, 'CPS');
+}
+
+// Function for upgrade costs
+function croinsCost(cost) {
+  return `Cost: ${cost} Croins`;
+}
+
+// Function for description
+function croinsDesc(desc, cs) {
+  return `+${desc} ${cs}`;
 }
 
 // Add Croins every second
@@ -52,23 +79,7 @@ function addCPS() {
   }, 1000)
 }
 
-// Check if Beg Button is being clicked
-function checkForBeg() {
-  begButton.addEventListener('click', () => {
-    croins += cpc;
-    updateInfo();
-  })
-}
 
-function spaceKeyPress() {
-    document.addEventListener("keypress", (e) => {
-        if (e.which === 32 || e.keyCode === 132 || e.key === "Space") {
-            croins += cpc;
-            updateInfo();
-            return false;
-        }
-    })
-}
 
 // Check if upgrades have been clicked
 function checkUpgrades() {
@@ -77,17 +88,17 @@ function checkUpgrades() {
 }
 
 // Upgrade 1
-function checkUpgrade1() {
-  upgrade1.addEventListener('click', () => {
-    cpc += 1;
+const checkUpgrade1 = () => {
+  if (croins >= upgrade1.cost) {
+    croins -= upgrade1.cost;
+    cpc += upgrade1.desc;
     updateInfo();
-  })
+  }
 }
+
+// upgrade1.object.addEventListener('click', () => {
 
 // Upgrade 2
 function checkUpgrade2() {
-  upgrade2.addEventListener('click', () => {
-    cps += 1;
-    updateInfo();
-  })
+  
 }
