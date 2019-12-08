@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Solway:400,700&display=swap');
+
+/* General Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Solway, serif;
+  background: #474646;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Header Styles */
+
+header h1 {
+  display: flex;
+  background: #E0B0FF;
+  font-size: 3em;
+  font-weight: normal;
+  padding-left: .5em;
+  height: 2em;
+  align-items: center;
+}
+
+/* Game Styles */
+
+#gameboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid white;
+  margin: 3em;
+  width: 55em;
+  height: 35em;
+}
+
+#info-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid white;
+  background: #E0B0FF;
+  flex: 1;
+  height: 5em;
+  padding: .5em;
+}
+
+.info {
+  font-size: 2em;
+  align-items: center;
+  flex: 1;
+}
+
+#game-section {
+  background: #8a8787;
+  display: flex;
+  height: 30em;
+}
+
+#beg-button {
+  font-family: Solway, serif;
+  height: 15em;
+  width: 15em;
+  background: #E0B0FF;
+  border: white 3px solid;
+  margin: 2em;
+}
+
+#beg-button p {
+  font-size: 1.5em;
+}
+
+#beg-button:active {
+  background: #c072f2;
+}
